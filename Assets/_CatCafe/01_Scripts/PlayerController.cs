@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             originalPosition = item.transform.position.y; // saves the original position of the object
             item.transform.position = tempPosition; // sets the position of the object to your hand position
             item.transform.parent = gameObject.transform; //makes the object become a child of the parent so that it moves with the hands
-            gameObject.tag = "PlayerWithItem"; // changes the tag of the object so that it can be identified as a picked up item
+            gameObject.tag = "PlayerWithItem"; // changes the tag of the player so it won't collide with other items
 
             isHoldingItem = true;
             Debug.Log("Item picked up");
