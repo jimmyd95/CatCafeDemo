@@ -10,6 +10,11 @@ TagManager:
   - cockpit_capitalLaser
   - Item
   - PlayerWithItem
+  - PlayArea
+  - Customer
+  - Furniture
+  - Cat
+  - Door
   layers:
   - Default
   - TransparentFX

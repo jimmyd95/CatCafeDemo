@@ -14,7 +14,9 @@ public class PlayerController : MonoBehaviour
     private InputAction interact;
     private bool isHoldingItem = false;
     private bool canPickup = false;
+    private bool customerItem = false;
     private GameObject item = null;
+    private GameObject customer = null;
     private float originalPosition;
     private float playerPositionY = 0.0f;
 
@@ -67,7 +69,16 @@ public class PlayerController : MonoBehaviour
             gameObject.tag = "PlayerWithItem"; // changes the tag of the player so it won't collide with other items
 
             isHoldingItem = true;
-            Debug.Log("Item picked up");
+            // Debug.Log("Item picked up");
+        }
+        else if(context.performed && isHoldingItem && customerItem)
+        {
+            var tempPosition = new Vector3(customer.transform.position.x + 1.5f, customer.transform.position.y + 1.5f, customer.transform.position.z + -1f);
+            item.transform.position = tempPosition;
+            item.transform.parent = customer.transform;
+            gameObject.tag = "Player";
+            isHoldingItem = false;
+            // play animation based on the collistion detection
         }
         // pick up the item when the player is holding an item and presses the E key to drop the item
         else if(context.performed && isHoldingItem)
@@ -79,7 +90,7 @@ public class PlayerController : MonoBehaviour
             gameObject.tag = "Player";
 
             isHoldingItem = false;
-            Debug.Log("Item dropped");
+            // Debug.Log("Item dropped");
         }
         else{
             Debug.Log("No item to pick up");
@@ -88,18 +99,32 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Item"))
+        if (other.CompareTag("Item") || other.CompareTag("Cat")) // check if the player can pick up the item or cat
         {
             canPickup = true;
             if(!item || !isHoldingItem) // if item is null, then get the collider item
                 item = other.gameObject;
-            Debug.Log("Item can be picked up");
+            // Debug.Log("Item can be picked up");
+        }
+        else if (other.CompareTag("Customer") && isHoldingItem) // check if the player can deliver item to the customer
+        {
+            customerItem = true;
+            customer = other.gameObject;
+            // Debug.Log("Item can be given to the customer");
+            // item = null; // gives away the right to control the cat
+            // play animation based on the collistion detection
         }
     }
 
     private void OnTriggerExit(Collider other) {
         canPickup = false;
-        Debug.Log("Item can no longer be picked up");
+        customerItem = false;
+        // Debug.Log("Item can no longer be picked up");
+    }
+
+    public bool GetIsHoldingItem()
+    {
+        return isHoldingItem;
     }
 
 }
