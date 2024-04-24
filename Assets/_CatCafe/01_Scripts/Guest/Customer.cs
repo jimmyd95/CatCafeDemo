@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Customer : NavMeshCustomer
 {
+    public bool hasLeft = false;
+    public bool hasCat = false;
     private bool playerLeft = false;
-    private bool hasCat = false;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -22,7 +23,14 @@ public class Customer : NavMeshCustomer
             agent.isStopped = false;
             target = GameObject.FindWithTag("Door").transform;
             agent.SetDestination(target.position);
+            // playerLeft = false;
+            destinationReached = false;
             playerLeft = false;
+        }
+        else if (destinationReached && hasCat)
+        {
+            hasLeft = true;
+            Debug.Log("Customer has left the cafe: " + hasLeft + " - " + destinationReached);
         }
     }
 
@@ -30,7 +38,13 @@ public class Customer : NavMeshCustomer
         if (other.CompareTag("Cat"))
         {
             hasCat = true;
-            Debug.Log("Cat entered the customer");
+            destinationReached = false;
+            // Debug.Log("Cat entered the customer");
+        }
+        if (other.CompareTag("Player"))
+        {
+            playerLeft = false;
+            // Debug.Log("Player entered the customer");
         }
     }
 
@@ -39,7 +53,7 @@ public class Customer : NavMeshCustomer
         if (other.CompareTag("Player"))
         {
             playerLeft = true;
-            Debug.Log("Player left the customer");
+            // Debug.Log("Player left the customer");
         }
     }
 

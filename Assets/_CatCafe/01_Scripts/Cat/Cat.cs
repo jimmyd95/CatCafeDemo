@@ -30,14 +30,9 @@ public class Cat : Item
         if (state == CatState.PLAY && !playerController.GetIsHoldingItem())
         {
             // play animation
-            gameObject.GetComponent<MeshRenderer>().material = materials[1]; // grey
+            gameObject.GetComponent<MeshRenderer>().material = materials[1]; // happy cat material
             // Debug.Log("Cat is playing");
         }
-        // else
-        // {
-        //     gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
-        // }
-        // Debug.Log(state);
     }
 
     protected override void OnTriggerEnter(Collider other) {
