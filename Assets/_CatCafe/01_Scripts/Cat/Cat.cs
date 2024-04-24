@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Cat : Item
 {
-    [SerializeField] private List<Material> materials;
+    [SerializeField] public List<Material> materials;
     public enum CatState
     {
         IDLE,

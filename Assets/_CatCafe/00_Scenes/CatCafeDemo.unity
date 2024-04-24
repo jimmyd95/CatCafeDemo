@@ -1362,6 +1362,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawn: {fileID: 1295161678}
+  _materials:
+  - {fileID: 2100000, guid: a86dfd33b4e2e25429a8606bd012d00a, type: 2}
+  - {fileID: 2100000, guid: aed17a96a4c8c4d4ab5d15353a08973d, type: 2}
+  - {fileID: 2100000, guid: 63fdeee45fb01484791a661e6ddfd0c4, type: 2}
 --- !u!114 &1295161680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,6 +1380,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materials: []
   _spawn: {fileID: 1295161677}
+  _materials:
+  - {fileID: 2100000, guid: 8316ad2b5bb8e2749b49ed454c906b7c, type: 2}
+  - {fileID: 2100000, guid: 13639c6de6edcd14db0405f4c12c466f, type: 2}
+  - {fileID: 2100000, guid: 011952cbdec5c4e459f45098d4062424, type: 2}
+  - {fileID: 2100000, guid: 5b3e4ef70e75c814396385229f59e4ca, type: 2}
+  - {fileID: 2100000, guid: 090b04c94fd51f241a1257504d90a485, type: 2}
+  - {fileID: 2100000, guid: 89ec6c31722fbf2479fcc75829f8e8fb, type: 2}
+  _catAmount: 3
 --- !u!1 &1437151280
 GameObject:
   m_ObjectHideFlags: 0
